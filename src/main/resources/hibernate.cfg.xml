@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <!--this section fill yourself-->
+    <property name="jdbc:mysql://localhost:3306/testmanager"/>
+    <property name="com.mysql.jdbc.Driver"/>
+    <property name="root"/>
+    <property name="1111"/>
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hbm2ddl.auto">update</property> -->
+      <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+      <property name="connection.schemaname">public</property>
+      <property name="hibernate.connection.characterEncoding">utf-8</property>
+      <property name="show_sql">true</property>
+
+      <property name="connection.pool_size">20</property>
+      <property name="hibernate.connection.autocommit">false</property>
+      <property name="current_session_context_class">thread</property>
+      <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+      <property name="hibernate.c3p0.acquire_increment">1</property>
+      <property name="hibernate.c3p0.idle_test_period">100</property>
+      <property name="hibernate.c3p0.max_size">10</property>
+      <property name="hibernate.c3p0.max_statements">10</property>
+      <property name="hibernate.c3p0.min_size">10</property>
+      <property name="hibernate.c3p0.timeout">100</property>
+  </session-factory>
+</hibernate-configuration>
