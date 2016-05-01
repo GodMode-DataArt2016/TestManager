@@ -10,7 +10,7 @@
     <property name="root"/>
     <property name="*****"/>
     <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+     <property name="hbm2ddl.auto">update</property>
       <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
       <property name="connection.schemaname">public</property>
       <property name="hibernate.connection.characterEncoding">utf-8</property>
