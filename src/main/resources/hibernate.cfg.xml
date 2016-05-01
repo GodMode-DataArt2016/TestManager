@@ -8,7 +8,7 @@
     <property name="jdbc:mysql://localhost:3306/testmanager"/>
     <property name="com.mysql.jdbc.Driver"/>
     <property name="root"/>
-    <property name="1111"/>
+    <property name="*****"/>
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
       <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
@@ -26,5 +26,14 @@
       <property name="hibernate.c3p0.max_statements">10</property>
       <property name="hibernate.c3p0.min_size">10</property>
       <property name="hibernate.c3p0.timeout">100</property>
+
+    <mapping class="org.GodMode.TestManager.entities.Answers"/>
+    <mapping class="org.GodMode.TestManager.entities.Block"/>
+    <mapping class="org.GodMode.TestManager.entities.QuestionMarks"/>
+    <mapping class="org.GodMode.TestManager.entities.Questions"/>
+    <mapping class="org.GodMode.TestManager.entities.TestMarks"/>
+    <mapping class="org.GodMode.TestManager.entities.Tests"/>
+    <mapping class="org.GodMode.TestManager.entities.TestsBlocks"/>
+    <mapping class="org.GodMode.TestManager.entities.Users"/>
   </session-factory>
 </hibernate-configuration>
