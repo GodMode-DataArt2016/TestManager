@@ -12,10 +12,8 @@ public interface Dao<T, I>
 
     T find(I id);
 
-    void save(T newsEntry);
+    void saveOrUpdate(T Entry);
 
-    void update(I id);
-
-    void delete(I id);
+    void delete(T Entry);
 
 }
