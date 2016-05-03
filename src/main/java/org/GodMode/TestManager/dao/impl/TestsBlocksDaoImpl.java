@@ -1,7 +1,7 @@
 package org.GodMode.TestManager.dao.impl;
 
 import org.GodMode.TestManager.dao.Dao;
-import org.GodMode.TestManager.entities.Tests;
+import org.GodMode.TestManager.entities.TestsBlocks;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by Oleg on 03.05.2016.
  */
-public class TestsDaoImpl implements Dao<Tests, Long> {
+public class TestsBlocksDaoImpl implements Dao<TestsBlocks, Long> {
 
     private SessionFactory sessionFactory;
 
@@ -21,20 +21,20 @@ public class TestsDaoImpl implements Dao<Tests, Long> {
 
     public List findAll() {
         Session session = this.sessionFactory.openSession();
-        List<Tests> testsList = session.createQuery("FROM Tests").list();
+        List<TestsBlocks> testsBlocksList = session.createQuery("FROM TestsBlocks").list();
         session.close();
-        return testsList;
+        return testsBlocksList;
     }
 
-    public Tests find(Long id) {
+    public TestsBlocks find(Long id) {
         Session session = this.sessionFactory.openSession();
         //need to check what is id? @Id or name of PK-column?
-        Tests tests = (Tests) session.get(Tests.class, id);
+        TestsBlocks testsBlocks = (TestsBlocks) session.get(TestsBlocks.class, id);
         session.close();
-        return tests;
+        return testsBlocks;
     }
 
-    public void saveOrUpdate(Tests entry) {
+    public void saveOrUpdate(TestsBlocks entry) {
         if (entry == null) return;
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -43,7 +43,7 @@ public class TestsDaoImpl implements Dao<Tests, Long> {
         session.close();
     }
 
-    public void delete(Tests entry) {
+    public void delete(TestsBlocks entry) {
         if (entry == null) return;
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
