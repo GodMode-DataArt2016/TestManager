@@ -5,10 +5,10 @@
 <hibernate-configuration>
   <session-factory>
     <!--this section fill yourself-->
-    <property name="jdbc:mysql://localhost:3306/testmanager"/>
-    <property name="com.mysql.jdbc.Driver"/>
-    <property name="root"/>
-    <property name="*****"/>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/testmanager</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">*****</property>
     <!-- DB schema will be updated if needed -->
      <property name="hbm2ddl.auto">update</property>
       <property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
