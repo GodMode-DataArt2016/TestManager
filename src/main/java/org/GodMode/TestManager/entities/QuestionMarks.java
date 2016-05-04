@@ -3,7 +3,7 @@ package org.GodMode.TestManager.entities;
 /**
  * Created by Oleg on 01.05.2016.
  */
-import org.hibernate.mapping.Set;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
