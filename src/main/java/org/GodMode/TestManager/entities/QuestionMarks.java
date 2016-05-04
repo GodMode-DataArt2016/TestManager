@@ -3,7 +3,7 @@ package org.GodMode.TestManager.entities;
 /**
  * Created by Oleg on 01.05.2016.
  */
-import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,11 +17,11 @@ public class QuestionMarks {
 
     @ManyToOne
     @JoinColumn(name = "u_id")
-    private Set<Users> users;
+    private Users users;
 
     @ManyToOne
     @JoinColumn(name = "q_id")
-    private Set<Question> question;
+    private Question question;
 
     @Column(name = "is_right")
     private Boolean isRight;
@@ -34,19 +34,19 @@ public class QuestionMarks {
         this.gmId = gmId;
     }
 
-    public Set<Users> getUsers() {
+    public Users getUsers() {
         return users;
     }
 
-    public void setUsers(Set<Users> users) {
+    public void setUsers(Users users) {
         this.users = users;
     }
 
-    public Set<Question> getQuestion() {
+    public Question getQuestion() {
         return question;
     }
 
-    public void setQuestion(Set<Question> question) {
+    public void setQuestion(Question question) {
         this.question = question;
     }
 
