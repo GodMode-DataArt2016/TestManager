@@ -21,7 +21,7 @@ public class QuestionMarks {
 
     @ManyToOne
     @JoinColumn(name = "q_id")
-    private Question question;
+    private Questions questions;
 
     @Column(name = "is_right")
     private Boolean isRight;
