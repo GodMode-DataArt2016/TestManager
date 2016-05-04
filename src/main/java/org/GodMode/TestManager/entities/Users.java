@@ -31,7 +31,10 @@ public class Users {
     private String email;
 
     @OneToMany(mappedBy = "users")
-    private java.util.Set<TestMarks> testMarks;
+    private Set<TestMarks> testMarks;
+
+    @OneToMany(mappedBy = "users")
+    private Set<QuestionMarks> questionMarkses;
 
     public Long getuId() {
         return uId;
@@ -79,5 +82,13 @@ public class Users {
 
     public void setTestMarks(Set<TestMarks> testMarks) {
         this.testMarks = testMarks;
+    }
+
+    public Set<QuestionMarks> getQuestionMarkses() {
+        return questionMarkses;
+    }
+
+    public void setQuestionMarkses(Set<QuestionMarks> questionMarkses) {
+        this.questionMarkses = questionMarkses;
     }
 }

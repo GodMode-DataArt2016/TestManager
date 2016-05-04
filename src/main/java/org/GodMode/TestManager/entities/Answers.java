@@ -23,7 +23,7 @@ public class Answers {
     private String text;
 
     @Column(name = "is_right")
-    private boolean isRight;
+    private Boolean isRight;
 
     @Column(name = "pic_src")
     private Long picSrc;
@@ -52,11 +52,11 @@ public class Answers {
         this.text = text;
     }
 
-    public boolean isRight() {
+    public Boolean isRight() {
         return isRight;
     }
 
-    public void setIsRight(boolean isRight) {
+    public void setIsRight(Boolean isRight) {
         this.isRight = isRight;
     }
 

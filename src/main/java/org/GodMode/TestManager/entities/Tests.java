@@ -3,6 +3,8 @@ package org.GodMode.TestManager.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+import java.util.Set;
+
 /**
  * Created by Oleg on 01.05.2016.
  */
@@ -16,7 +18,7 @@ public class Tests {
     @Column(name = "t_id")
     private long tId;
 
-    @Column(name = "testName", nullable = false, length = 50)
+    @Column(name = "test_name", nullable = false, length = 50)
     private String testName;
 
     @Column(name = "is_public", nullable = false)
@@ -26,11 +28,14 @@ public class Tests {
     @Column(name = "start_date")
     private Date startDate;
 
-    @Column(name = "end_Date")
+    @Column(name = "end_date")
     private Date endDate;
 
-    public Tests() {
-    }
+    @OneToMany(mappedBy = "tests")
+    private Set<TestMarks> testMarks;
+
+    @OneToMany(mappedBy = "tests")
+    private Set<Questions> questionses;
 
     public long gettId() {
         return tId;
@@ -52,8 +57,8 @@ public class Tests {
         return isPublic;
     }
 
-    public void setPublic(boolean aPublic) {
-        isPublic = aPublic;
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
     }
 
     public Date getStartDate() {
@@ -70,5 +75,21 @@ public class Tests {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Set<TestMarks> getTestMarks() {
+        return testMarks;
+    }
+
+    public void setTestMarks(Set<TestMarks> testMarks) {
+        this.testMarks = testMarks;
+    }
+
+    public Set<Questions> getQuestionses() {
+        return questionses;
+    }
+
+    public void setQuestionses(Set<Questions> questionses) {
+        this.questionses = questionses;
     }
 }
