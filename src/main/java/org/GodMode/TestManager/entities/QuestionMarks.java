@@ -42,20 +42,20 @@ public class QuestionMarks {
         this.users = users;
     }
 
-    public Question getQuestion() {
-        return question;
+    public Questions getQuestions() {
+        return questions;
     }
 
-    public void setQuestion(Question question) {
-        this.question = question;
+    public void setQuestions(Questions questions) {
+        this.questions = questions;
     }
 
-    public Boolean getRight() {
+    public Boolean getIsRight() {
         return isRight;
     }
 
-    public void setRight(Boolean right) {
-        isRight = right;
+    public void setIsRight(Boolean isRight) {
+        this.isRight = isRight;
     }
 }
 
