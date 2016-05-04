@@ -1,7 +1,7 @@
 package org.GodMode.TestManager.entities;
 
 
-import org.hibernate.mapping.Set;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -30,8 +30,8 @@ public class Users {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "TestMarks")
-    private Set<TestMarks> testMarks;
+    @OneToMany(mappedBy = "users")
+    private java.util.Set<TestMarks> testMarks;
 
     public Long getuId() {
         return uId;
