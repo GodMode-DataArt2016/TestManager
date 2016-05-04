@@ -34,7 +34,7 @@ public class TestsBlocksDaoImpl implements Dao<TestsBlocks, Long> {
         return testsBlocks;
     }
 
-    public void saveOrUpdate(TestsBlocks entry) {
+    public void saveOrUpdate(Tests entry) {
         if (entry == null) return;
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
@@ -43,7 +43,7 @@ public class TestsBlocksDaoImpl implements Dao<TestsBlocks, Long> {
         session.close();
     }
 
-    public void delete(TestsBlocks entry) {
+    public void delete(Tests entry) {
         if (entry == null) return;
         Session session = this.sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
