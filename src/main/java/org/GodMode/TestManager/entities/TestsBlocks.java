@@ -12,7 +12,7 @@ public class TestsBlocks {
     @Id
     @GeneratedValue(generator = "increment")
     @Column(name = "tb_id")
-    private long tbId;
+    private Long tbId;
 
     @ManyToOne
     @JoinColumn(name = "t_id")
@@ -24,11 +24,11 @@ public class TestsBlocks {
 
     public TestsBlocks() {}
 
-    public long getTbId() {
+    public Long getTbId() {
         return tbId;
     }
 
-    public void setTbId(long tbId) {
+    public void setTbId(Long tbId) {
         this.tbId = tbId;
     }
 

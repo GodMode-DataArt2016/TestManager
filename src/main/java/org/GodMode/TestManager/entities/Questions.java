@@ -25,7 +25,7 @@ public class Questions {
     private  String questionText;
 
     @Column
-    private byte picture;
+    private Byte picture;
 
     @Enumerated(EnumType.STRING)
     @Column
@@ -55,11 +55,11 @@ public class Questions {
         this.questionText = questionText;
     }
 
-    public byte getPicture() {
+    public Byte getPicture() {
         return picture;
     }
 
-    public void setPicture(byte picture) {
+    public void setPicture(Byte picture) {
         this.picture = picture;
     }
 

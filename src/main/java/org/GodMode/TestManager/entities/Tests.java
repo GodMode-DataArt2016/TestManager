@@ -16,7 +16,7 @@ public class Tests {
     @Id
     @GeneratedValue(generator = "increment")
     @Column(name = "t_id")
-    private long tId;
+    private Long tId;
 
     @Column(name = "test_name", nullable = false, length = 50)
     private String testName;
@@ -37,11 +37,11 @@ public class Tests {
     @OneToMany(mappedBy = "tests")
     private Set<Questions> questionses;
 
-    public long gettId() {
+    public Long gettId() {
         return tId;
     }
 
-    public void settId(long tId) {
+    public void settId(Long tId) {
         this.tId = tId;
     }
 
