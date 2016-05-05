@@ -1,6 +1,6 @@
 package org.GodMode.TestManager.entities;
 
-import org.hibernate.mapping.Set;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -20,7 +20,7 @@ public class Block {
     private String description;
 
     @OneToMany(mappedBy = "TestsBlocks")
-    private Set testsBlocks;
+    private Set<TestsBlocks> testsBlocks;
 
     public Long getbId() {
         return bId;
