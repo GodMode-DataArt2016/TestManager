@@ -7,11 +7,11 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Answers")
+@Table(name = "answers")
 public class Answers {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "a_id")
     private Long aId;
 

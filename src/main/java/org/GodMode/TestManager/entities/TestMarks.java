@@ -3,11 +3,11 @@ package org.GodMode.TestManager.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TestMarks")
+@Table(name = "testmarks")
 public class TestMarks {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "tm_id")
     private Long tmId;
 

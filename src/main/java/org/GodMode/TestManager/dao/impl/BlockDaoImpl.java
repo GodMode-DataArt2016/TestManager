@@ -1,7 +1,9 @@
 package org.GodMode.TestManager.dao.impl;
 
 import org.GodMode.TestManager.dao.Dao;
+import org.GodMode.TestManager.dao.utils.HibernateUtil;
 import org.GodMode.TestManager.entities.Block;
+import org.GodMode.TestManager.entities.TestsBlocks;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -12,21 +14,16 @@ import java.util.List;
  */
 public class BlockDaoImpl implements Dao<Block, Long> {
 
-    private SessionFactory sessionFactory;
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
+    @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = this.sessionFactory.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         List<Block> blockList = session.createQuery("FROM Block").list();
         session.close();
         return blockList;
     }
 
     public Block find(Long id) {
-        Session session = this.sessionFactory.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Block block = (Block) session.get(Block.class, id);
         session.close();
         return block;
@@ -34,19 +31,19 @@ public class BlockDaoImpl implements Dao<Block, Long> {
 
     public void saveOrUpdate(Block entry) {
         if (entry == null) return;
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.saveOrUpdate(entry);
-        transaction.commit();
+        session.getTransaction().commit();
         session.close();
     }
 
     public void delete(Block entry) {
         if (entry == null) return;
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.delete(entry);
-        transaction.commit();
+        session.getTransaction().commit();
         session.close();
     }
 }

@@ -6,11 +6,11 @@ import javax.persistence.*;
  * Created by Oleg on 01.05.2016.
  */
 @Entity
-@Table(name = "TestsBlocks")
+@Table(name = "testsblocks")
 public class TestsBlocks {
 
     @Id
-    @GeneratedValue(generator = "increment")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "tb_id")
     private Long tbId;
 

@@ -4,39 +4,23 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <!--&lt;!&ndash;this section fill yourself&ndash;&gt;-->
-    <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
-    <!--<property name="connection.url">jdbc:mysql://localhost:3306/testmanager?useSSL=false</property>-->
-      <!--<property name="databasename">testmanager</property>-->
-    <!--<property name="connection.username">root</property>-->
-    <!--<property name="connection.password">15081979</property>-->
-    <!--&lt;!&ndash; DB schema will be updated if needed &ndash;&gt;-->
-     <!--<property name="hbm2ddl.auto">update</property>-->
-      <!--<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>-->
-      <!--<property name="connection.schemaname">public</property>-->
-      <!--<property name="hibernate.connection.characterEncoding">utf-8</property>-->
-      <!--<property name="show_sql">true</property>-->
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testmanager?useSSL=false</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">****</property>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="show_sql">true</property>
 
-      <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/testmanager?useSSL=false</property>
-      <property name="hibernate.connection.username">root</property>
-      <property name="hibernate.connection.password">15081979</property>
-      <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
-      <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-      <property name="hibernate.hbm2ddl.auto">create</property>
-      <property name="show_sql">true</property>
-
-
-      <!--<property name="connection.pool_size">20</property>-->
-      <!--<property name="hibernate.connection.autocommit">false</property>-->
-      <!--<property name="current_session_context_class">thread</property>-->
-      <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-      <!--<property name="hibernate.c3p0.acquire_increment">1</property>-->
-      <!--<property name="hibernate.c3p0.idle_test_period">100</property>-->
-      <!--<property name="hibernate.c3p0.max_size">10</property>-->
-      <!--<property name="hibernate.c3p0.max_statements">10</property>-->
-      <!--<property name="hibernate.c3p0.min_size">10</property>-->
-      <!--<property name="hibernate.c3p0.timeout">100</property>-->
+    <!--<property name="connection.pool_size">20</property>-->
+    <!--<property name="hibernate.connection.autocommit">false</property>-->
+    <!--<property name="current_session_context_class">thread</property>-->
+    <!--<property name="hibernate.c3p0.acquire_increment">1</property>-->
+    <!--<property name="hibernate.c3p0.idle_test_period">100</property>-->
+    <!--<property name="hibernate.c3p0.max_size">10</property>-->
+    <!--<property name="hibernate.c3p0.max_statements">10</property>-->
+    <!--<property name="hibernate.c3p0.min_size">10</property>-->
+    <!--<property name="hibernate.c3p0.timeout">100</property>-->
 
     <mapping class="org.GodMode.TestManager.entities.Answers"/>
     <mapping class="org.GodMode.TestManager.entities.Block"/>

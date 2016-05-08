@@ -1,10 +1,9 @@
 package org.GodMode.TestManager.dao.impl;
 
 import org.GodMode.TestManager.dao.Dao;
+import org.GodMode.TestManager.dao.utils.HibernateUtil;
 import org.GodMode.TestManager.entities.Tests;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -13,22 +12,16 @@ import java.util.List;
  */
 public class TestsDaoImpl implements Dao<Tests, Long> {
 
-    private SessionFactory sessionFactory;
-
-    public void setSessionFactory(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
-
+    @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = this.sessionFactory.openSession();
+        Session session = HibernateUtil.getSessionFactory().openSession();
         List<Tests> testsList = session.createQuery("FROM Tests").list();
         session.close();
         return testsList;
     }
 
     public Tests find(Long id) {
-        Session session = this.sessionFactory.openSession();
-        //need to check what is id? @Id or name of PK-column?
+        Session session = HibernateUtil.getSessionFactory().openSession();
         Tests tests = (Tests) session.get(Tests.class, id);
         session.close();
         return tests;
@@ -36,19 +29,19 @@ public class TestsDaoImpl implements Dao<Tests, Long> {
 
     public void saveOrUpdate(Tests entry) {
         if (entry == null) return;
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.saveOrUpdate(entry);
-        transaction.commit();
+        session.getTransaction().commit();
         session.close();
     }
 
     public void delete(Tests entry) {
         if (entry == null) return;
-        Session session = this.sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
         session.delete(entry);
-        transaction.commit();
+        session.getTransaction().commit();
         session.close();
     }
 }

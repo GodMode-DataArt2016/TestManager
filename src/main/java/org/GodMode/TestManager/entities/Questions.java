@@ -10,25 +10,26 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Questions")
+@Table(name = "questions")
 public class Questions {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "q_id")
     private Long qId;
 
-    @OneToOne(mappedBy="Tests", fetch = FetchType.EAGER)
-    private Tests test;
+    @ManyToOne
+    @JoinColumn(name = "t_id")
+    private Tests tests;
 
-    @Column
-    private  String questionText;
+    @Column(name = "q_text")
+    private  String qText;
 
-    @Column
-    private Byte picture;
+    @Column(name = "pic_src")
+    private Byte picSrc;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column(name = "type")
     private QuestionType type;
 
     public Long getqId() {
@@ -39,28 +40,28 @@ public class Questions {
         this.qId = qId;
     }
 
-    public Tests getTest() {
-        return test;
+    public Tests getTests() {
+        return tests;
     }
 
-    public void setTest(Tests test) {
-        this.test = test;
+    public void setTests(Tests tests) {
+        this.tests = tests;
     }
 
-    public String getQuestionText() {
-        return questionText;
+    public String getqText() {
+        return qText;
     }
 
-    public void setQuestionText(String questionText) {
-        this.questionText = questionText;
+    public void setqText(String qText) {
+        this.qText = qText;
     }
 
-    public Byte getPicture() {
-        return picture;
+    public Byte getPicSrc() {
+        return picSrc;
     }
 
-    public void setPicture(Byte picture) {
-        this.picture = picture;
+    public void setPicSrc(Byte picSrc) {
+        this.picSrc = picSrc;
     }
 
     public QuestionType getType() {

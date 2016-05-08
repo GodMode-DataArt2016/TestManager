@@ -10,12 +10,12 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class Users {
 
     @Id
-    @GeneratedValue
-    @Column(name = "u_id")
+    @Column(name = "u_id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long uId;
 
     @Column(name = "name")

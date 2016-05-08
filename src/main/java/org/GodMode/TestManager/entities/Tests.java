@@ -10,11 +10,11 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "Tests")
+@Table(name = "tests")
 public class Tests {
 
     @Id
-    @GeneratedValue(generator = "increment")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "t_id")
     private Long tId;
 
