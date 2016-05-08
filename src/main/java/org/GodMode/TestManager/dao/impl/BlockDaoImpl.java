@@ -7,6 +7,7 @@ import org.GodMode.TestManager.entities.TestsBlocks;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 /**
@@ -14,16 +15,19 @@ import java.util.List;
  */
 public class BlockDaoImpl implements Dao<Block, Long> {
 
+    @Autowired
+    HibernateUtil hibernateUtil;
+
     @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         List<Block> blockList = session.createQuery("FROM Block").list();
         session.close();
         return blockList;
     }
 
     public Block find(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         Block block = (Block) session.get(Block.class, id);
         session.close();
         return block;
@@ -31,7 +35,7 @@ public class BlockDaoImpl implements Dao<Block, Long> {
 
     public void saveOrUpdate(Block entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(entry);
         session.getTransaction().commit();
@@ -40,7 +44,7 @@ public class BlockDaoImpl implements Dao<Block, Long> {
 
     public void delete(Block entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(entry);
         session.getTransaction().commit();

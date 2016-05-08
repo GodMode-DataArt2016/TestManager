@@ -4,6 +4,7 @@ import org.GodMode.TestManager.dao.Dao;
 import org.GodMode.TestManager.dao.utils.HibernateUtil;
 import org.GodMode.TestManager.entities.QuestionMarks;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -12,16 +13,19 @@ import java.util.List;
  */
 public class QuestionMarksDaoImpl implements Dao<QuestionMarks, Long> {
 
+    @Autowired
+    HibernateUtil hibernateUtil;
+
     @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         List<QuestionMarks> questionMarksList = session.createQuery("FROM QuestionMarks").list();
         session.close();
         return questionMarksList;
     }
 
     public QuestionMarks find(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         QuestionMarks questionMarks = (QuestionMarks) session.get(QuestionMarks.class, id);
         session.close();
         return questionMarks;
@@ -29,7 +33,7 @@ public class QuestionMarksDaoImpl implements Dao<QuestionMarks, Long> {
 
     public void saveOrUpdate(QuestionMarks entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(entry);
         session.getTransaction().commit();
@@ -38,7 +42,7 @@ public class QuestionMarksDaoImpl implements Dao<QuestionMarks, Long> {
 
     public void delete(QuestionMarks entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(entry);
         session.getTransaction().commit();

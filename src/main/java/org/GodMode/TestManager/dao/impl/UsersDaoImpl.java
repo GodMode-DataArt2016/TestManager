@@ -4,6 +4,7 @@ import org.GodMode.TestManager.dao.Dao;
 import org.GodMode.TestManager.dao.utils.HibernateUtil;
 import org.GodMode.TestManager.entities.Users;
 import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -12,16 +13,19 @@ import java.util.List;
  */
 public class UsersDaoImpl implements Dao<Users, Long> {
 
+    @Autowired
+    HibernateUtil hibernateUtil;
+
     @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         List<Users> usersList = session.createQuery("FROM Users").list();
         session.close();
         return usersList;
     }
 
     public Users find(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         Users users = (Users) session.get(Users.class, id);
         session.close();
         return users;
@@ -29,7 +33,7 @@ public class UsersDaoImpl implements Dao<Users, Long> {
 
     public void saveOrUpdate(Users entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(entry);
         session.getTransaction().commit();
@@ -38,7 +42,7 @@ public class UsersDaoImpl implements Dao<Users, Long> {
 
     public void delete(Users entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(entry);
         session.getTransaction().commit();

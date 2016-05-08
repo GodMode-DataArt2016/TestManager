@@ -7,6 +7,7 @@ import org.GodMode.TestManager.entities.TestsBlocks;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -15,16 +16,19 @@ import java.util.List;
  */
 public class AnswersDaoImpl implements Dao<Answers, Long> {
 
+    @Autowired
+    HibernateUtil hibernateUtil;
+
     @SuppressWarnings("unchecked")
     public List findAll() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         List<Answers> answersList = session.createQuery("FROM Answers").list();
         session.close();
         return answersList;
     }
 
     public Answers find(Long id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         Answers answers = (Answers) session.get(Answers.class, id);
         session.close();
         return answers;
@@ -32,7 +36,7 @@ public class AnswersDaoImpl implements Dao<Answers, Long> {
 
     public void saveOrUpdate(Answers entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.saveOrUpdate(entry);
         session.getTransaction().commit();
@@ -41,7 +45,7 @@ public class AnswersDaoImpl implements Dao<Answers, Long> {
 
     public void delete(Answers entry) {
         if (entry == null) return;
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = hibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
         session.delete(entry);
         session.getTransaction().commit();
